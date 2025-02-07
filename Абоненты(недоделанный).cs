@@ -31,12 +31,30 @@ class Program
                 case 1:
                     count = FillData(subscribers, count);
                     break;
+                case 2:
 
 
             }
         }
         
         
+
+
+    }
+
+    static void FilterByName(Subscriber[] subs, int count)
+    {
+        Console.WriteLine("Введите имя абонента");
+        string nm = Console.ReadLine();
+
+        
+        for (int i = 0; i < count; i++)
+        {
+            if (subs[i].name == nm)
+            {
+                Console.WriteLine(subs[i]);
+            }
+        }
 
 
     }
@@ -49,8 +67,9 @@ class Program
             Console.WriteLine("Введите данные для абонента (или нажмите Enter для завершения):");
             Console.WriteLine("ФИО:");
 
+            
             string subsctiberName = Console.ReadLine();
-
+            if (string.IsNullOrWhiteSpace(subsctiberName)) break;
 
             Console.WriteLine("Номер телефона:");
             string subscriberNumber = Console.ReadLine();
