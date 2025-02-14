@@ -6,7 +6,7 @@ class Program
 {
 
     const int MaxSubscribers = 100;
-    
+
     static void Main(string[] args)
     {
 
@@ -32,12 +32,21 @@ class Program
                     count = FillData(subscribers, count);
                     break;
                 case 2:
-
-
+                    FilterByName(subscribers, count);
+                    break;
+                case 3:
+                    FilterByOperator(subscribers, count);
+                    break;
+                case 4:
+                    FilterByNumber(subscribers, count);
+                    break;
+                case 5:
+                    Environment.Exit(0);
+                    break;
             }
         }
-        
-        
+
+
 
 
     }
@@ -47,18 +56,80 @@ class Program
         Console.WriteLine("Введите имя абонента");
         string nm = Console.ReadLine();
 
-        
+
         for (int i = 0; i < count; i++)
         {
             if (subs[i].name == nm)
             {
-                Console.WriteLine(subs[i]);
+                Console.Write("Имя: ");
+                Console.WriteLine(subs[i].name);
+                Console.Write("Оператор: ");
+                Console.WriteLine(subs[i].operatr);
+                Console.Write("Телефон: ");
+                Console.WriteLine(subs[i].number);
+                Console.Write("Город: ");
+                Console.WriteLine(subs[i].city);
+                Console.Write("Год подключения: ");
+                Console.WriteLine(subs[i].year);
+                Console.WriteLine();
+            }
+        }
+
+
+    }
+    static void FilterByOperator(Subscriber[] subs, int count)
+    {
+        Console.WriteLine("Введите название оператора: ");
+        string op = Console.ReadLine();
+
+
+        for (int i = 0; i < count; i++)
+        {
+            if (subs[i].operatr == op)
+            {
+                Console.Write("Имя: ");
+                Console.WriteLine(subs[i].name);
+                Console.Write("Оператор: ");
+                Console.WriteLine(subs[i].operatr);
+                Console.Write("Телефон: ");
+                Console.WriteLine(subs[i].number);
+                Console.Write("Город: ");
+                Console.WriteLine(subs[i].city);
+                Console.Write("Год подключения: ");
+                Console.WriteLine(subs[i].year);
+                Console.WriteLine();
             }
         }
 
 
     }
 
+    static void FilterByNumber(Subscriber[] subs, int count)
+    {
+        Console.WriteLine("Введите номер: ");
+        string num = Console.ReadLine();
+
+
+        for (int i = 0; i < count; i++)
+        {
+            if (subs[i].number == num)
+            {
+                Console.Write("Имя: ");
+                Console.WriteLine(subs[i].name);
+                Console.Write("Оператор: ");
+                Console.WriteLine(subs[i].operatr);
+                Console.Write("Телефон: ");
+                Console.WriteLine(subs[i].number);
+                Console.Write("Город: ");
+                Console.WriteLine(subs[i].city);
+                Console.Write("Год подключения: ");
+                Console.WriteLine(subs[i].year);
+                Console.WriteLine();
+            }
+        }
+
+
+    }
 
     static int FillData(Subscriber[] subscribers, int count)
     {
@@ -67,29 +138,54 @@ class Program
             Console.WriteLine("Введите данные для абонента (или нажмите Enter для завершения):");
             Console.WriteLine("ФИО:");
 
-            
+
             string subsctiberName = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(subsctiberName)) break;
 
-            Console.WriteLine("Номер телефона:");
-            string subscriberNumber = Console.ReadLine();
 
-            subscribers[count++] = new Subscriber(subsctiberName, subscriberNumber);
+            Console.Write("Введите количество номеров: ");
+            int n = Int32.Parse(Console.ReadLine());
+            string[] subscriberNumbers = new string[n];
+            for (int i = 0; i < n; i++){
+                Console.Write("Введите " + (i+1) + " номер телефона: ");
+                subscriberNumbers[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("Оператор: ");
+            string op = Console.ReadLine();
+
+            Console.WriteLine("Город: ");
+            string city = Console.ReadLine();
+
+            Console.WriteLine("Год подключения: ");
+            string year = Console.ReadLine();
+
+
+
+            subscribers[count++] = new Subscriber(subsctiberName, subscriberNumbers[], op, city, year);
         }
         return count;
 
     }
-    
+
 }
 
-class Subscriber {
+class Subscriber
+{
     public string name = "ФИО";
-    public string number = "88005553535";
+    public string[] number;
+    public string operatr = "unknown";
+    public string city = "city";
+    public string year = "year";
 
-    public Subscriber(string Name, string Number)
+
+
+    public Subscriber(string Name, string[] Numbers, string Operatr, string City, string Year)
     {
         name = Name;
-        number = Number;
+        number = Numbers;
+        operatr = Operatr;
+        city = City;
+        year = Year;
     }
-
 }
