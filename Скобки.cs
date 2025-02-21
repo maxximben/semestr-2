@@ -68,7 +68,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("Сколби расставлены правильно");
+            Console.WriteLine("Скобки расставлены правильно");
         }
 
         
