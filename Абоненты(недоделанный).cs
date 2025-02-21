@@ -51,10 +51,22 @@ class Program
 
     }
 
+    static void print_array(string[] arr)
+    {
+        Console.Write("\n");
+        for (int i = 0; i < arr.Length; i++)
+        {
+            
+            Console.WriteLine(arr[i]);
+        }
+    }
+
     static void FilterByName(Subscriber[] subs, int count)
     {
         Console.WriteLine("Введите имя абонента");
         string nm = Console.ReadLine();
+
+        Console.WriteLine();
 
 
         for (int i = 0; i < count; i++)
@@ -66,7 +78,7 @@ class Program
                 Console.Write("Оператор: ");
                 Console.WriteLine(subs[i].operatr);
                 Console.Write("Телефон: ");
-                Console.WriteLine(subs[i].number);
+                print_array(subs[i].number);
                 Console.Write("Город: ");
                 Console.WriteLine(subs[i].city);
                 Console.Write("Год подключения: ");
@@ -81,7 +93,7 @@ class Program
     {
         Console.WriteLine("Введите название оператора: ");
         string op = Console.ReadLine();
-
+        Console.WriteLine();
 
         for (int i = 0; i < count; i++)
         {
@@ -92,7 +104,7 @@ class Program
                 Console.Write("Оператор: ");
                 Console.WriteLine(subs[i].operatr);
                 Console.Write("Телефон: ");
-                Console.WriteLine(subs[i].number);
+                print_array(subs[i].number);
                 Console.Write("Город: ");
                 Console.WriteLine(subs[i].city);
                 Console.Write("Год подключения: ");
@@ -108,18 +120,19 @@ class Program
     {
         Console.WriteLine("Введите номер: ");
         string num = Console.ReadLine();
+        Console.WriteLine();
 
 
         for (int i = 0; i < count; i++)
         {
-            if (subs[i].number == num)
+            if (subs[i].number[0] == num)
             {
                 Console.Write("Имя: ");
                 Console.WriteLine(subs[i].name);
                 Console.Write("Оператор: ");
                 Console.WriteLine(subs[i].operatr);
                 Console.Write("Телефон: ");
-                Console.WriteLine(subs[i].number);
+                print_array(subs[i].number);
                 Console.Write("Город: ");
                 Console.WriteLine(subs[i].city);
                 Console.Write("Год подключения: ");
@@ -139,8 +152,8 @@ class Program
             Console.WriteLine("ФИО:");
 
 
-            string subsctiberName = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(subsctiberName)) break;
+            string subscriberName = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(subscriberName)) break;
 
 
             Console.Write("Введите количество номеров: ");
@@ -162,7 +175,7 @@ class Program
 
 
 
-            subscribers[count++] = new Subscriber(subsctiberName, subscriberNumbers[], op, city, year);
+            subscribers[count++] = new Subscriber(subscriberName, subscriberNumbers, op, city, year);
         }
         return count;
 
