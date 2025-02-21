@@ -33,12 +33,13 @@ class Program
             }
             else if (charArray[i] == ')' && stack1.Count > 0)
             {
-                stack1.Pop();
+                
                 if (stack1.Count == 0)
                 {
                     Console.WriteLine("Скобки расставлены неправильно");
                     Environment.Exit(0);
                 }
+                stack1.Pop();
             }
             else if (charArray[i] == '}' && stack2.Count > 0)
             {
