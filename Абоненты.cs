@@ -56,7 +56,7 @@ class Program
         Console.Write("\n");
         for (int i = 0; i < arr.Length; i++)
         {
-            
+
             Console.WriteLine(arr[i]);
         }
     }
@@ -75,14 +75,17 @@ class Program
             {
                 Console.Write("Имя: ");
                 Console.WriteLine(subs[i].name);
-                Console.Write("Оператор: ");
-                Console.WriteLine(subs[i].operatr);
-                Console.Write("Телефон: ");
-                print_array(subs[i].number);
+                
                 Console.Write("Город: ");
                 Console.WriteLine(subs[i].city);
-                Console.Write("Год подключения: ");
-                Console.WriteLine(subs[i].year);
+
+                Console.WriteLine("Номера:");
+                for (int j = 0; j < subs[i].phones.Length; i++)
+                {
+                    Console.WriteLine(subs[i].phones[j].number);
+                    Console.WriteLine(subs[i].phones[j].year);
+                }
+
                 Console.WriteLine();
             }
         }
@@ -97,20 +100,27 @@ class Program
 
         for (int i = 0; i < count; i++)
         {
-            if (subs[i].operatr == op)
+            for (int k = 0; k < subs[i].phones.Length; k++)
             {
-                Console.Write("Имя: ");
-                Console.WriteLine(subs[i].name);
-                Console.Write("Оператор: ");
-                Console.WriteLine(subs[i].operatr);
-                Console.Write("Телефон: ");
-                print_array(subs[i].number);
-                Console.Write("Город: ");
-                Console.WriteLine(subs[i].city);
-                Console.Write("Год подключения: ");
-                Console.WriteLine(subs[i].year);
-                Console.WriteLine();
+                if (subs[i].phones[k].operatr == op)
+                {
+                    Console.Write("Имя: ");
+                    Console.WriteLine(subs[i].name);
+
+                    Console.Write("Город: ");
+                    Console.WriteLine(subs[i].city);
+
+                    Console.WriteLine("Номера:");
+                    for (int j = 0; j < subs[i].phones.Length; i++)
+                    {
+                        Console.WriteLine(subs[i].phones[j].number);
+                        Console.WriteLine(subs[i].phones[j].year);
+                    }
+
+                    Console.WriteLine();
+                }
             }
+            
         }
 
 
@@ -125,23 +135,27 @@ class Program
 
         for (int i = 0; i < count; i++)
         {
-            if (subs[i].number[0] == num)
+            for (int k = 0; k < subs[i].phones.Length; k++)
             {
-                Console.Write("Имя: ");
-                Console.WriteLine(subs[i].name);
-                Console.Write("Оператор: ");
-                Console.WriteLine(subs[i].operatr);
-                Console.Write("Телефон: ");
-                print_array(subs[i].number);
-                Console.Write("Город: ");
-                Console.WriteLine(subs[i].city);
-                Console.Write("Год подключения: ");
-                Console.WriteLine(subs[i].year);
-                Console.WriteLine();
+                if (subs[i].phones[k].number == num)
+                {
+                    Console.Write("Имя: ");
+                    Console.WriteLine(subs[i].name);
+
+                    Console.Write("Город: ");
+                    Console.WriteLine(subs[i].city);
+
+                    Console.WriteLine("Номера:");
+                    for (int j = 0; j < subs[i].phones.Length; i++)
+                    {
+                        Console.WriteLine(subs[i].phones[j].number);
+                        Console.WriteLine(subs[i].phones[j].year);
+                    }
+
+                    Console.WriteLine();
+                }
             }
         }
-
-
     }
 
     static int FillData(Subscriber[] subscribers, int count)
@@ -158,24 +172,27 @@ class Program
 
             Console.Write("Введите количество номеров: ");
             int n = Int32.Parse(Console.ReadLine());
-            string[] subscriberNumbers = new string[n];
-            for (int i = 0; i < n; i++){
-                Console.Write("Введите " + (i+1) + " номер телефона: ");
-                subscriberNumbers[i] = Console.ReadLine();
-            }
+            Phone[] phones = new Phone[n];
+            
 
-            Console.WriteLine("Оператор: ");
-            string op = Console.ReadLine();
+            for (int i = 0; i < n; i++)
+            {
+                
+                Console.Write("Введите " + (i + 1) + " номер телефона: ");
+                string nm = Console.ReadLine();
+                Console.WriteLine("Оператор: ");
+                string op = Console.ReadLine();
+                Console.WriteLine("Год подключения: ");
+                string yr = Console.ReadLine();
+                
+                phones[i] = new Phone(nm, op, yr);
+            }
 
             Console.WriteLine("Город: ");
             string city = Console.ReadLine();
 
-            Console.WriteLine("Год подключения: ");
-            string year = Console.ReadLine();
-
-
-
-            subscribers[count++] = new Subscriber(subscriberName, subscriberNumbers, op, city, year);
+     
+            subscribers[count++] = new Subscriber(subscriberName, city, phones);
         }
         return count;
 
@@ -185,20 +202,30 @@ class Program
 
 class Subscriber
 {
-    public string name = "ФИО";
-    public string[] number;
-    public string operatr = "unknown";
-    public string city = "city";
-    public string year = "year";
+    public string name;
+    public string city;
+    public Phone[] phones;
 
 
 
-    public Subscriber(string Name, string[] Numbers, string Operatr, string City, string Year)
+    public Subscriber(string Name, string City, Phone[] Phones)
     {
         name = Name;
-        number = Numbers;
-        operatr = Operatr;
         city = City;
+        phones = Phones;
+    }
+}
+
+class Phone
+{
+    public string number;
+    public string operatr;
+    public string year;
+
+    public Phone(string Number, string Operatr, string Year)
+    {
+        number = Number;
+        operatr = Operatr;
         year = Year;
     }
 }
