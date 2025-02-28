@@ -80,10 +80,11 @@ class Program
                 Console.WriteLine(subs[i].city);
 
                 Console.WriteLine("Номера:");
-                for (int j = 0; j < subs[i].phones.Length; i++)
+                for (int j = 0; j < subs[i].phones.Length; j++)
                 {
-                    Console.WriteLine(subs[i].phones[j].number);
-                    Console.WriteLine(subs[i].phones[j].year);
+                    Console.WriteLine("номер: " + subs[i].phones[j].number);
+                    Console.WriteLine("оператор " + subs[i].phones[j].operatr);
+                    Console.WriteLine("год подключения " + subs[i].phones[j].year);
                 }
 
                 Console.WriteLine();
@@ -111,10 +112,11 @@ class Program
                     Console.WriteLine(subs[i].city);
 
                     Console.WriteLine("Номера:");
-                    for (int j = 0; j < subs[i].phones.Length; i++)
+                    for (int j = 0; j < subs[i].phones.Length; j++)
                     {
-                        Console.WriteLine(subs[i].phones[j].number);
-                        Console.WriteLine(subs[i].phones[j].year);
+                        Console.WriteLine("номер: " + subs[i].phones[j].number);
+                        Console.WriteLine("оператор " + subs[i].phones[j].operatr);
+                        Console.WriteLine("год подключения " + subs[i].phones[j].year);
                     }
 
                     Console.WriteLine();
@@ -146,10 +148,11 @@ class Program
                     Console.WriteLine(subs[i].city);
 
                     Console.WriteLine("Номера:");
-                    for (int j = 0; j < subs[i].phones.Length; i++)
+                    for (int j = 0; j < subs[i].phones.Length; j++)
                     {
-                        Console.WriteLine(subs[i].phones[j].number);
-                        Console.WriteLine(subs[i].phones[j].year);
+                        Console.WriteLine("номер: " + subs[i].phones[j].number);
+                        Console.WriteLine("оператор " + subs[i].phones[j].operatr);
+                        Console.WriteLine("год подключения " + subs[i].phones[j].year);
                     }
 
                     Console.WriteLine();
