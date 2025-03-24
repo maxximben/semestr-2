@@ -35,8 +35,9 @@ def ford_bellman(graph, start):
                     print("negative weight cycle detected")
                     exit()
 
-    print(distances)
-    print(previous)
+
+    print("distances:", distances)
+    print("previous:", previous)
 
     fin = int(input("finish: "))
 
