@@ -4,8 +4,6 @@ unsafe class Program
 {
     unsafe static void Main()
     {
-        Console.Clear();
-
         Product obj1 = new Product(2435, "Мука");
         Product* head = &obj1;
 
